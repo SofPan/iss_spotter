@@ -48,11 +48,22 @@ const fetchCoordsByIp = (ip, callback) => {
       callback(Error(msg), null);
       return;
     }
+
     const ipLocationInformation = JSON.parse(body);
+
+
+    if (!ipLocationInformation.success) {
+      const msg = `Failed when fetching IP address.
+      Response: ${ipLocationInformation.message}`;
+      callback(Error(msg), null);
+      return;
+    }
+
     const coordinates = {
       latitude: ipLocationInformation.latitude,
       longitude: ipLocationInformation.longitude
     };
+
     return callback(null, coordinates);
   });
 };
