@@ -1,5 +1,8 @@
 const { nextISSTimesForMyLocation } = require('./iss');
 
+const dateFormatter = (date) => {
+
+};
 
 nextISSTimesForMyLocation((error, passTimes) => {
   if (error) {
