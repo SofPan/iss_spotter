@@ -11,9 +11,19 @@ const request = require('request');
  */
 
 const fetchMyIp = (callback) => {
-  request("https://api64.ipify.org?format=json", (error, status, data) => {
+  request("https://api64.ipify.org?format=json", (error, response, data) => {
+    if (error) {
+      return callback(error, null);
+    }
+
+    if (response.statusCode !== 200) {
+      const msg = `Status Code ${response.statusCode} when fetching IP. Response: ${data}`;
+      callback(Error(msg), null);
+      return;
+    }
+
     const ipData = JSON.parse(data);
-    return callback(error, ipData.ip);
+    return callback(null, ipData.ip);
   });
 };
 
