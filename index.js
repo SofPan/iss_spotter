@@ -11,8 +11,12 @@ fetchMyIp((error, ip) => {
       return error;
     }
 
-    console.log("the data:", userLocation);
-    return userLocation;
+    const locationObj = {
+      latitude: userLocation.latitude,
+      longitude: userLocation.longitude
+    };
+    console.log("lat/lon", locationObj);
+    return locationObj;
   });
 });
 
