@@ -59,12 +59,9 @@ const fetchCoordsByIp = (ip, callback) => {
       return;
     }
 
-    const coordinates = {
-      latitude: ipLocationInformation.latitude,
-      longitude: ipLocationInformation.longitude
-    };
+    const { latitude, longitude } = ipLocationInformation;
 
-    return callback(null, coordinates);
+    return callback(null, { latitude, longitude });
   });
 };
 
