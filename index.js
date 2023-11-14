@@ -6,6 +6,8 @@ nextISSTimesForMyLocation((error, passTimes) => {
     console.log(error);
     return;
   }
-  console.log("passTimes", passTimes);
+  return passTimes.map((pass) => {
+    console.log(console.log("pass", pass));
+  });
 });
 
