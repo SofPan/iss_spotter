@@ -27,4 +27,18 @@ const fetchMyIp = (callback) => {
   });
 };
 
-module.exports = { fetchMyIp };
+/**
+ * @function fetchCoordsByIp makes a single API request to fetch the user's location based on their IP address
+ * @param ip an IP address presented as a string
+ * @param callback to pass back an error or the geo-coordinates
+ * @returns (via callback):
+ *  - an error (if any)
+ *  - the geo-coordinates of the user (null if error)
+ * @link for API ipwhois http://ipwho.is/[IP address]
+ */
+
+const fetchCoordsByIp = () => {
+
+};
+
+module.exports = { fetchMyIp, fetchCoordsByIp };
