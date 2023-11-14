@@ -16,7 +16,6 @@ fetchMyIp((error, ip) => {
         console.log("ISS LOCATION ERROR:", error.message);
         return;
       }
-      console.log("ISS data", data);
       return data;
     });
   });
