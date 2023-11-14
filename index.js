@@ -11,7 +11,9 @@ nextISSTimesForMyLocation((error, passTimes) => {
   }
   return passTimes.map((pass) => {
     const formattedDate = dateFormatter(pass.risetime);
-    console.log("pass date:", formattedDate);
+    const passMessage = `Next pass at ${formattedDate} for ${pass.duration} seconds`;
+    console.log(passMessage);
+    return;
   });
 });
 
