@@ -7,11 +7,8 @@ fetchMyIp((error, ip) => {
 
   return fetchCoordsByIp(ip, (error, userLocation) => {
     if (error) {
-      console.log("There was an error:", error);
       return error;
     }
-
-    console.log("lat/lon", userLocation);
     return userLocation;
   });
 });
