@@ -11,18 +11,18 @@ const request = require('request');
  */
 
 const fetchMyIp = (callback) => {
-  request("https://api64.ipify.org?format=json", (error, response, data) => {
+  request("https://api64.ipify.org?format=json", (error, response, body) => {
     if (error) {
       return callback(error, null);
     }
 
     if (response.statusCode !== 200) {
-      const msg = `Status Code ${response.statusCode} when fetching IP. Response: ${data}`;
+      const msg = `Status Code ${response.statusCode} when fetching IP. Response: ${body}`;
       callback(Error(msg), null);
       return;
     }
 
-    const ipData = JSON.parse(data);
+    const ipData = JSON.parse(body);
     return callback(null, ipData.ip);
   });
 };
@@ -38,7 +38,19 @@ const fetchMyIp = (callback) => {
  */
 
 const fetchCoordsByIp = (ip, callback) => {
+  request(`http://ipwho.is/${ip}`, (error, response, body) => {
+    if (error) {
+      return callback(error, null);
+    }
 
+    if (response.statusCode !== 200) {
+      const msg = `Status Code ${response.statusCode} when fetching IP. Response: ${body}`;
+      callback(Error(msg), null);
+      return;
+    }
+    const locationData = JSON.parse(body);
+    return callback(null, locationData);
+  });
 };
 
 module.exports = { fetchMyIp, fetchCoordsByIp };
