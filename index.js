@@ -1,7 +1,7 @@
 const { nextISSTimesForMyLocation } = require('./iss');
 
 const dateFormatter = (date) => {
-  return new Date(date);
+  return new Date(date).toString();
 };
 
 nextISSTimesForMyLocation((error, passTimes) => {
