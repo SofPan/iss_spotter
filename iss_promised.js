@@ -15,10 +15,13 @@ const fetchISSFlyOverTimes = (body) => {
 };
 
 const nextISSTimesForMyLocation = () => {
-  fetchMyIp()
+  return fetchMyIp()
     .then(fetchCoordsByIp)
     .then(fetchISSFlyOverTimes)
-    .then(body => console.log(body));
+    .then(data => {
+      const { response } = JSON.parse(data);
+      return response;
+    });
 };
 
 module.exports = { nextISSTimesForMyLocation };
