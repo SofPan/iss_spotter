@@ -11,8 +11,8 @@ fetchMyIp((error, ip) => {
     }
     return issFlyoverTimes(userLocation, (error, data) => {
       if (error) {
-        console.log(error);
-        return error;
+        console.log("ERROR:", error.message);
+        return;
       }
       console.log("ISS data", data);
       return data;

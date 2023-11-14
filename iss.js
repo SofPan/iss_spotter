@@ -76,9 +76,13 @@ const fetchCoordsByIp = (ip, callback) => {
  */
 
 const issFlyoverTimes = (coordinates, callback) => {
-  request(`https://iss-flyover.herokuapp.com/json/?lat=${coordinates.latitude}&lon=${coordinates.longitude}`, (error, response, body) => {
+  request(`https://iss-flyover.herokuapp.com/json/?lat=${coordinates.latitude}&lon=${coordinates}`, (error, response, body) => {
     if (error) {
       return callback(error, null);
+    }
+    // If body is not JSON, use text as error message
+    if (!body.includes("{")) {
+      return callback(Error(body), null);
     }
     const issData = JSON.parse(body);
     return callback(null, issData);
