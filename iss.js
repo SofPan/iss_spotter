@@ -34,7 +34,7 @@ const fetchMyIp = (callback) => {
  * @returns (via callback):
  *  - an error (if any)
  *  - the geo-coordinates of the user (null if error)
- * @link for API ipwhois http://ipwho.is/[IP address]
+ * @link for API ipwhois http://ipwho.is/${IP address}
  */
 
 const fetchCoordsByIp = (ip, callback) => {
@@ -65,4 +65,21 @@ const fetchCoordsByIp = (ip, callback) => {
   });
 };
 
-module.exports = { fetchMyIp, fetchCoordsByIp };
+/**
+ * @function issFlyoverTimes makes a single API request to fetch the ISS Flyover Times based on user's geo-coordinates
+ * @param coordinates an object containing latitude and longitude coordinates
+ * @returns :
+ *  - the same outputs back (for checking)
+ *  - a time stamp when the API ran
+ *  - a success or failure message
+ *  - a list of passes
+ *    - duration in seconds
+ *    - rise time as a unix time stamp
+ * @link for API https://iss-flyover.herokuapp.com/json/?lat=${YOUR_LAT_INPUT_HERE}&lon=${YOUR_LON_INPUT_HERE}
+ */
+
+const issFlyoverTimes = (coordinates) => {
+
+};
+
+module.exports = { fetchMyIp, fetchCoordsByIp, issFlyoverTimes };
