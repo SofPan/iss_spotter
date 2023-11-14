@@ -89,4 +89,16 @@ const issFlyoverTimes = (coordinates, callback) => {
   });
 };
 
+/**
+ * @function nextISSTimesForMyLocation orchestrates multiple API requests in order to determine the next 5 upcoming ISS fly overs for the user's current location
+ * @param callback with an error or results
+ * @returns (via callback):
+ *  - an error (if any)
+ *  - The fly-over times as an array (null if error)
+ */
+
+const nextISSTimesForMyLocation = (callback) => {
+
+};
+
 module.exports = { fetchMyIp, fetchCoordsByIp, issFlyoverTimes };
