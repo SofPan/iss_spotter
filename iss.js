@@ -37,7 +37,7 @@ const fetchMyIp = (callback) => {
  * @link for API ipwhois http://ipwho.is/[IP address]
  */
 
-const fetchCoordsByIp = () => {
+const fetchCoordsByIp = (ip, callback) => {
 
 };
 
