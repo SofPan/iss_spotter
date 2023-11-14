@@ -2,16 +2,18 @@ const { fetchMyIp, fetchCoordsByIp, issFlyoverTimes } = require('./iss');
 
 fetchMyIp((error, ip) => {
   if (error) {
-    return error;
+    console.log("IP ERROR:", error.message);
+    return;
   }
 
   return fetchCoordsByIp(ip, (error, userLocation) => {
     if (error) {
-      return error;
+      console.log("FETCH COORDINATES ERROR:", error.message);
+      return;
     }
     return issFlyoverTimes(userLocation, (error, data) => {
       if (error) {
-        console.log("ERROR:", error.message);
+        console.log("ISS LOCATION ERROR:", error.message);
         return;
       }
       console.log("ISS data", data);
