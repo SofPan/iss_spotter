@@ -1,10 +1,19 @@
-// const { fetchMyIp } = require('./iss');
+const { fetchMyIp, fetchCoordsByIp } = require('./iss');
 
-// fetchMyIp((error, ip) => {
-//   if (error) {
-//     console.log("It didn't work.", error);
-//     return;
-//   }
+const ipAddress = fetchMyIp((error, ip) => {
+  if (error) {
+    return error;
+  }
 
-//   console.log('It worked! Returned IP:', ip);
-// });
+  return ip;
+});
+
+fetchCoordsByIp(ipAddress, (error, userLocation) => {
+  if (error) {
+    console.log("There was an error:", error);
+    return error;
+  }
+
+  console.log("the data:", userLocation);
+  return userLocation;
+});
