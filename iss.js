@@ -1,3 +1,5 @@
+const request = require('request');
+
 /**
  * @function fetchMyIp makes a single API request to fetch the user's IP address.
  * @param callback to pass back an error or the IP string
@@ -9,7 +11,10 @@
  */
 
 const fetchMyIp = (callback) => {
-
+  request("https://api64.ipify.org?format=json", (error, status, data) => {
+    const ipData = JSON.parse(data);
+    return callback(error, ipData.ip);
+  });
 };
 
 module.exports = { fetchMyIp };
