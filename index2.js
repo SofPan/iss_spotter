@@ -1,9 +1,9 @@
 const { nextISSTimesForMyLocation } = require('./iss_promised');
+const { printPassTimes } = require('./util');
 
 nextISSTimesForMyLocation()
   .then((passTimes) => {
-    console.log(passTimes);
-    // printPassTimes(passTimes);
+    printPassTimes(passTimes);
   })
   .catch((error) => {
     console.log("It didn't work: ", error.message);
